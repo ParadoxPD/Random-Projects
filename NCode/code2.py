@@ -1,35 +1,50 @@
 
 
-def transpose(a):
-    return [[a[j][i] for j in range(len(a))] for i in range(len(a[0]))]
+_, _, N = [int(x) for x in input().split()]
 
-
-def find_index(list, val):
-    for sub_list in list:
-        if val in sub_list:
-            return (list.index(sub_list), sub_list.index(val))
-
-
-H, W, N = [int(x) for x in input().split()]
-
-M = [[0 for _ in range(W)] for _ in range(H)]
+M = []
+A = set()
+B = set()
 
 for i in range(N):
     a, b = [int(x) for x in input().split()]
-    M[a-1][b-1] = i+1
+    A.add(a)
+    B.add(b)
+    M.append([a, b])
 
-M2 = []
-for i in range(H):
-    if sum(M[i]) != 0:
-        M2.append(M[i])
-M2 = transpose(M2)
-M = M2.copy()
+A = list(A)  # list of non zero rows
+B = list(B)  # list of non zero columns
 
-M2 = []
-for i in range(W):
-    if sum(M[i]) != 0:
-        M2.append(M[i])
-
-M2 = transpose(M2)
 for i in range(N):
-    print(" ".join([str(x+1) for x in find_index(M2, i+1)]))
+    # Tranforming the rows
+    M[i][0] = A.index(M[i][0]) + 1
+    # Tranforming the columns
+    M[i][1] = B.index(M[i][1]) + 1
+
+
+print("\n".join([" ".join([str(x), str(y)]) for x, y in M]))
+
+'''
+Input:
+
+4 5 2
+3 2
+2 5
+
+Output:
+
+2 1
+1 2
+
+
+
+
+6 5 3
+3 5
+2 3
+6 5
+
+2 2
+1 1
+3 2
+'''
