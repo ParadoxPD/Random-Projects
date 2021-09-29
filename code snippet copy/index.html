@@ -596,11 +596,9 @@ c = <span>124</span> d = <span>214</span> <span>// NOT OK</span></code></pre>
             /* Darker */
         }
 
-        .button {
+        .copy-code-button {
             display: inline-block;
-
             display: none;
-            /* opacity: 0; */
             position: absolute;
             top: 0;
             right: 0;
@@ -616,7 +614,21 @@ c = <span>124</span> d = <span>214</span> <span>// NOT OK</span></code></pre>
             overflow: hidden;
         }
 
-        .button svg {
+        .copy-code-success-message {
+            color: white;
+            display: inline-block;
+
+            /* display: none; */
+            opacity: 0;
+            position: absolute;
+            top: 0;
+            right: 50;
+            margin-top: 0px;
+            margin-right: 10px;
+            transition: all 0.4s ease-out;
+        }
+
+        .copy-code-button svg {
 
             fill: #80858C99;
             position: absolute;
@@ -624,7 +636,7 @@ c = <span>124</span> d = <span>214</span> <span>// NOT OK</span></code></pre>
             left: 10%;
         }
 
-        pre:hover .button {
+        pre:hover .copy-code-button {
             display: inline-block;
             background-color: #20252C;
             color: #ffffffaa;
@@ -632,7 +644,7 @@ c = <span>124</span> d = <span>214</span> <span>// NOT OK</span></code></pre>
 
         }
 
-        .button:hover {
+        .copy-code-button:hover {
 
             background-color: #33393F !important;
             border: #60656C solid 2px !important;
@@ -640,7 +652,7 @@ c = <span>124</span> d = <span>214</span> <span>// NOT OK</span></code></pre>
 
 
 
-        .button:hover svg {
+        .copy-code-button:hover svg {
             fill: #b0b5bC !important;
         }
     </style>

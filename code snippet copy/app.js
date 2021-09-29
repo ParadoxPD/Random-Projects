@@ -1,12 +1,10 @@
 const codes = document.querySelectorAll("pre")
 
-console.log(codes)
-
 codes.forEach((codeBlock) => {
     let htmlCode = codeBlock.innerHTML
-    console.log(htmlCode)
+
     htmlCode += `
-        <button class=\"button\" onclick=\"copyCode(this)\">
+        <button class=\"copy-code-button\" onclick=\"copyCode(this)\">
             <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" xmlns:xlink="http://www.w3.org/1999/xlink" enable-background="new 0 0 512 512" style="display: block;" transform="scale(0.65)">
                 <g>
                     <g>
@@ -17,15 +15,32 @@ codes.forEach((codeBlock) => {
                 </g>
             </svg>
         </button>
-        
+        <span class=\"copy-code-success-message\">
+            Copied!
+        </span>
     `
     codeBlock.innerHTML = htmlCode
 });
 
 function copyCode(event) {
+    const color = "green";
     const codeBlock = event.parentElement;
     let codeSnippet = codeBlock.querySelector('code').innerText;
     console.log(codeSnippet);
     const cb = navigator.clipboard;
-    cb.writeText(codeSnippet).then(() => alert('Text copied'));
+    cb.writeText(codeSnippet).then(() => {
+        const copyMessage = codeBlock.querySelector('.copy-code-success-message');
+        const codeCopyButton = codeBlock.querySelector('.copy-code-button');
+        const codeCopyButtonSVG = codeBlock.querySelector('.copy-code-button svg');
+        copyMessage.style.opacity = 1;
+        codeCopyButton.setAttribute('style', `border-color:${color} !important`);
+        codeCopyButtonSVG.setAttribute('style', `fill:${color} !important`);
+
+        console.log(codeCopyButton);
+        setTimeout(() => {
+            copyMessage.style.opacity = 0;
+            codeCopyButton.setAttribute('style', 'border-color:#40454C60');
+            codeCopyButtonSVG.setAttribute('style', 'fill:#80858C99');
+        }, 600);
+    });
 }
