@@ -440,6 +440,8 @@ c = <span>124</span> d = <span>214</span> <span>// NOT OK</span></code></pre>
             overflow: auto;
             padding: 16px;
             color: #C9D1D9;
+            position: relative;
+            overflow: hidden;
 
         }
 
@@ -595,14 +597,54 @@ c = <span>124</span> d = <span>214</span> <span>// NOT OK</span></code></pre>
         }
 
         .button {
+            display: inline-block;
+
             display: none;
+            /* opacity: 0; */
+            position: absolute;
+            top: 0;
+            right: 0;
+            margin-top: 10px;
+            margin-right: 10px;
+            transition-duration: 0.4s;
+            transition: all 0.5s;
+            border-radius: 10px;
+            border: #40454C60 solid 2px;
+            background-color: #20252C;
+            width: 36px;
+            height: 36px;
+            overflow: hidden;
         }
 
-        img:hover+.button,
-        .button:hover {
+        .button svg {
+
+            fill: #80858C99;
+            position: absolute;
+            top: 5%;
+            left: 10%;
+        }
+
+        pre:hover .button {
             display: inline-block;
+            background-color: #20252C;
+            color: #ffffffaa;
+            border: #40454C60 solid 2px;
+
+        }
+
+        .button:hover {
+
+            background-color: #33393F !important;
+            border: #60656C solid 2px !important;
+        }
+
+
+
+        .button:hover svg {
+            fill: #b0b5bC !important;
         }
     </style>
+
 
     <script src="app.js"></script>
 </body>
