@@ -23,7 +23,7 @@ codes.forEach((codeBlock) => {
 });
 
 function copyCode(event) {
-    const color = "green";
+    const color = "#32CE55AA";
     const codeBlock = event.parentElement;
     let codeSnippet = codeBlock.querySelector('code').innerText;
     console.log(codeSnippet);
@@ -33,6 +33,7 @@ function copyCode(event) {
         const codeCopyButton = codeBlock.querySelector('.copy-code-button');
         const codeCopyButtonSVG = codeBlock.querySelector('.copy-code-button svg');
         copyMessage.style.opacity = 1;
+        copyMessage.style.color = color;
         codeCopyButton.setAttribute('style', `border-color:${color} !important`);
         codeCopyButtonSVG.setAttribute('style', `fill:${color} !important`);
 
